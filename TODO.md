@@ -1,7 +1,7 @@
 # JobTailor — Roadmap
 
 ## Step 1 — Setup repo
-- [x] Next.js 16 + TS + Tailwind v4 + ESLint (già presenti)
+- [x] Next.js 16 + TS + Tailwind v4 + ESLint
 - [x] Migrazione `app/` → `src/app/`
 - [x] Aggiornamento tsconfig paths per `src/`
 - [x] Installazione `@anthropic-ai/sdk`, `@supabase/supabase-js`, `@supabase/ssr`, `cheerio`
@@ -10,23 +10,35 @@
 - [x] `.prettierrc` + `.prettierignore`
 - [x] `src/lib/supabase/client.ts` + `server.ts`
 - [x] Struttura `src/lib/ai/prompts/`, `fixtures/`, `scripts/`
-- [ ] shadcn/ui init (da fare interattivamente)
+- [x] Vitest configurato (`pnpm test`)
+- [ ] shadcn/ui init (da fare interattivamente: `pnpm dlx shadcn@latest init`)
 
 ## Step 2 — Script `extractCvFromPdf`
-- [ ] Prompt `src/lib/ai/prompts/extractCvFromPdf.ts`
-- [ ] Script `scripts/test-extract-cv.ts`
-- [ ] Iterazione sul prompt fino a output di qualità
+- [x] Prompt `src/lib/ai/prompts/extractCvFromPdf.ts`
+- [x] Script `scripts/test-extract-cv.ts`
+- [ ] Fixture PDF in `fixtures/` (richiesta per testare — aggiungere manualmente)
+- [ ] Iterazione sul prompt dopo test con PDF reale
 
 ## Step 3 — Script `extractJobFromText`
-- [ ] Prompt `src/lib/ai/prompts/extractJobFromText.ts`
-- [ ] Script `scripts/test-extract-job.ts`
-- [ ] Iterazione
+- [x] Schema `src/lib/ai/_shared/jobDescriptionSchema.ts` + test
+- [x] Prompt `src/lib/ai/prompts/extractJobFromText.ts`
+- [x] Script `scripts/test-extract-job.ts` (`pnpm test:extract-job`)
+- [ ] Iterazione sul prompt dopo test
 
 ## Step 4 — Script `generateTailoredCv` + `generateCoverLetter`
-- [ ] Prompt `src/lib/ai/prompts/generateTailoredCv.ts`
-- [ ] Prompt `src/lib/ai/prompts/generateCoverLetter.ts`
-- [ ] Script `scripts/test-generate.ts`
-- [ ] Iterazione
+- [x] Schema `src/lib/ai/_shared/tailoredCvSchema.ts` + test
+- [x] Prompt `src/lib/ai/prompts/generateTailoredCv.ts`
+- [x] Prompt `src/lib/ai/prompts/generateCoverLetter.ts`
+- [x] Script `scripts/test-generate.ts` (`pnpm test:generate`)
+- [ ] Iterazione sul prompt dopo test
+
+## Step DB — Database (Supabase)
+- [x] Migration SQL `supabase/migrations/001_initial_schema.sql`
+- [x] TypeScript types `src/lib/db/types.ts`
+- [ ] Creare progetto Supabase su supabase.com
+- [ ] Riempire `.env.local` con `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
+- [ ] Applicare migration (dashboard → SQL editor → incollare il file)
+- [ ] Creare bucket Storage: `cv-uploads` e `cv-generated` (privati)
 
 ## Step 5 — UI
 - [ ] Auth (login / signup con Supabase magic link + Google OAuth)

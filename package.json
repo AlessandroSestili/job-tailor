@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:extract-cv": "tsx --env-file=.env.local scripts/test-extract-cv.ts"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:extract-cv": "tsx --env-file=.env.local scripts/test-extract-cv.ts",
+    "test:extract-job": "tsx --env-file=.env.local scripts/test-extract-job.ts",
+    "test:generate": "tsx --env-file=.env.local scripts/test-generate.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.88.0",
@@ -33,12 +37,15 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "pdf-lib": "^1.17.1",
     "prettier": "^3.8.2",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.4"
   }
 }
